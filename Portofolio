@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Azzam Azhar Firdaus - Personal Portfolio | Student, Web Learner, Creative Thinker">
+  <title>Azzam Azhar Firdaus | Personal Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --text-primary: #1e293b;
+      --accent-primary: #0d9488;
+      --accent-secondary: #14b8a6;
+    }
+    
+    .dark {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --text-primary: #f1f5f9;
+      --accent-primary: #14b8a6;
+      --accent-secondary: #2dd4bf;
+    }
+    
+    .bg-theme-primary { background-color: var(--bg-primary); }
+    .bg-theme-secondary { background-color: var(--bg-secondary); }
+    .text-theme-primary { color: var(--text-primary); }
+    .text-accent { color: var(--accent-primary); }
+    .bg-accent { background-color: var(--accent-primary); }
+    .border-accent { border-color: var(--accent-primary); }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    }
+    
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(13, 148, 136, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(13, 148, 136, 0.6); }
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+    .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(-45deg, #0d9488, #14b8a6, #2dd4bf, #0f766e);
+      background-size: 400% 400%;
+      animation: gradient-shift 15s ease infinite;
+    }
+    
+    .skill-bar {
+      transition: width 1.5s ease-in-out;
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .counter-number {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-primary);
+      border-radius: 4px;
+    }
+    
+    .section-hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .section-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hamburger-line {
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+    
+    .chatbot-container {
+      transform: scale(0);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .chatbot-container.open {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .testimonial-slide {
+      transition: all 0.5s ease;
+    }
+    
+    .portfolio-item {
+      transition: all 0.4s ease;
+    }
+    
+    .filter-btn.active {
+      background: var(--accent-primary);
+      color: white;
+    }
+  </style>
+</head>
+<body class="h-full bg-theme-primary text-theme-primary overflow-auto">
+  
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-theme-secondary/90 backdrop-blur-md shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform">
+            A
+          </div>
+          <span class="font-bold text-lg hidden sm:block">Azzam <span class="text-accent">A. Firdaus</span></span>
+        </a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#home" class="nav-link text-sm font-medium hover:text-accent transition-colors active">Home</a>
+          <a href="#about" class="nav-link text-sm font-medium hover:text-accent transition-colors">About</a>
+          <a href="#skills" class="nav-link text-sm font-medium hover:text-accent transition-colors">Skills</a>
+          <a href="#portfolio" class="nav-link text-sm font-medium hover:text-accent transition-colors">Portfolio</a>
+          <a href="#blog" class="nav-link text-sm font-medium hover:text-accent transition-colors">Blog</a>
+          <a href="#contact" class="nav-link text-sm font-medium hover:text-accent transition-colors">Contact</a>
+        </div>
+        
+        <!-- Right Controls -->
+        <div class="flex items-center gap-3">
+          <!-- Search Button -->
+          <button id="searchBtn" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </button>
+          
+          <!-- Language Toggle -->
+          <button id="langToggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all">
+            ID
+          </button>
+          
+          <!-- Dark Mode Toggle -->
+          <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+            <svg id="sunIcon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+            </svg>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Menu">
+            <div class="w-5 h-4 flex flex-col justify-between">
+              <span class="hamburger-line w-full h-0.5 bg-current rounded"></span>
+              <span class="hamburger-line w-full h-0.5 bg-current rounded"></span>
+              <span class="hamburger-line w-3/4 h-0.5 bg-current rounded ml-auto"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 bottom-0 w-72 bg-theme-secondary z-50 shadow-2xl">
+    <div class="p-6">
+      <button id="closeMobileMenu" class="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      
+      <div class="mt-12 flex flex-col gap-4">
+        <a href="#home" class="mobile-nav-link py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors">🏠 Home</a>
+        <a href="#about" class="mobile-nav-link py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors">👤 About</a>
+        <a href="#skills" class="mobile-nav-link py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors">💡 Skills</a>
+        <a href="#portfolio" class="mobile-nav-link py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors">📁 Portfolio</a>
+        <a href="#blog" class="mobile-nav-link py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors">📝 Blog</a>
+        <a href="#contact" class="mobile-nav-link py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors">📧 Contact</a>
+      </div>
+      
+      <!-- Social Links in Mobile Menu -->
+      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <p class="text-sm text-gray-500 mb-4">Connect with me</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Search Modal -->
+  <div id="searchModal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="searchOverlay"></div>
+    <div class="relative max-w-2xl mx-auto mt-24 px-4">
+      <div class="bg-theme-secondary rounded-2xl shadow-2xl p-6 animate-fade-in-up">
+        <div class="flex items-center gap-4 mb-4">
+          <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search projects, skills, blog posts..." class="flex-1 bg-transparent text-lg outline-none placeholder-gray-400">
+          <button id="closeSearch" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div id="searchResults" class="space-y-2 max-h-64 overflow-auto"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="pt-16">
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative overflow-hidden flex items-center">
+      <!-- Animated Background -->
+      <div class="absolute inset-0 hero-gradient opacity-10"></div>
+      <div class="absolute top-20 left-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+      
+      <!-- Floating Shapes -->
+      <div class="absolute top-1/4 right-1/4 w-4 h-4 bg-accent rounded-full animate-float" style="animation-delay: -1s;"></div>
+      <div class="absolute top-1/3 left-1/3 w-3 h-3 bg-teal-400 rounded-full animate-float" style="animation-delay: -2s;"></div>
+      <div class="absolute bottom-1/4 left-1/4 w-5 h-5 bg-accent/50 rounded-full animate-float" style="animation-delay: -4s;"></div>
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          
+          <!-- Text Content -->
+          <div class="text-center lg:text-left space-y-6 animate-fade-in-up">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium">
+              <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              <span id="statusText">Available for opportunities</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              <span id="greeting">Hi, I'm</span><br>
+              <span id="heroTitle" class="gradient-text">Azzam Azhar Firdaus</span>
+            </h1>
+            
+            <p id="heroSubtitle" class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 font-medium">
+              Student | Web Learner | Creative Thinker
+            </p>
+            
+            <p id="heroDescription" class="text-gray-600 dark:text-gray-400 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              Passionate about creating beautiful and functional web experiences. Currently learning and exploring the vast world of web development.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <a href="#portfolio" class="px-8 py-4 rounded-xl gradient-bg text-white font-semibold shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-1 transition-all duration-300">
+                View Portfolio
+              </a>
+              <a href="#contact" class="px-8 py-4 rounded-xl border-2 border-accent text-accent font-semibold hover:bg-accent hover:text-white transition-all duration-300">
+                Contact Me
+              </a>
+            </div>
+            
+            <!-- Stats Counter -->
+            <div class="grid grid-cols-3 gap-6 pt-8 max-w-md mx-auto lg:mx-0">
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold gradient-text counter-number" data-target="10">0</div>
+                <div id="projectsLabel" class="text-sm text-gray-500 mt-1">Projects</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold gradient-text counter-number" data-target="15">0</div>
+                <div id="skillsLabel" class="text-sm text-gray-500 mt-1">Skills</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold gradient-text counter-number" data-target="5">0</div>
+                <div id="certsLabel" class="text-sm text-gray-500 mt-1">Certificates</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Profile Image -->
+          <div class="relative flex justify-center lg:justify-end animate-fade-in-up" style="animation-delay: 0.2s;">
+            <div class="relative">
+              <!-- Decorative Ring -->
+              <div class="absolute -inset-4 rounded-full gradient-bg opacity-20 blur-xl animate-pulse-glow"></div>
+              <div class="absolute -inset-2 rounded-full border-2 border-accent/30 animate-spin" style="animation-duration: 20s;"></div>
+              
+              <!-- Profile Container -->
+              <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
+                <!-- Placeholder Avatar -->
+                <div class="w-full h-full gradient-bg flex items-center justify-center">
+                  <svg class="w-32 h-32 text-white/80" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Floating Badge -->
+              <div class="absolute -bottom-2 -right-2 px-4 py-2 rounded-xl bg-theme-secondary shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl">🎓</span>
+                  <span class="font-semibold text-sm">Student</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <span class="text-sm text-gray-400">Scroll Down</span>
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-theme-secondary section-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-accent font-semibold text-sm uppercase tracking-wider" id="aboutLabel">About Me</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-2" id="aboutTitle">Get To Know Me</h2>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Image Side -->
+          <div class="relative">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div class="aspect-[4/5] gradient-bg flex items-center justify-center">
+                <div class="text-center text-white p-8">
+                  <div class="text-6xl mb-4">💻</div>
+                  <h3 class="text-2xl font-bold">Creative Developer</h3>
+                </div>
+              </div>
+            </div>
+            <!-- Experience Badge -->
+            <div class="absolute -bottom-6 -right-6 p-6 rounded-2xl bg-theme-secondary shadow-xl border border-gray-100 dark:border-gray-700">
+              <div class="text-4xl font-bold gradient-text">1+</div>
+              <div class="text-sm text-gray-500" id="yearsLabel">Years Learning</div>
+            </div>
+          </div>
+          
+          <!-- Text Content -->
+          <div class="space-y-6">
+            <p id="aboutText" class="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+              Hello! I'm Azzam Azhar Firdaus, a passionate student who loves exploring the world of web development. I believe that technology can change the world, and I want to be part of that change.
+            </p>
+            
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-theme-primary">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white">📚</div>
+                  <h4 class="font-semibold" id="educationTitle">Education</h4>
+                </div>
+                <p class="text-sm text-gray-500" id="educationText">High School Student</p>
+              </div>
+              <div class="p-4 rounded-xl bg-theme-primary">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white">📍</div>
+                  <h4 class="font-semibold" id="locationTitle">Location</h4>
+                </div>
+                <p class="text-sm text-gray-500" id="locationText">Indonesia</p>
+              </div>
+              <div class="p-4 rounded-xl bg-theme-primary">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white">🎯</div>
+                  <h4 class="font-semibold" id="interestTitle">Interest</h4>
+                </div>
+                <p class="text-sm text-gray-500" id="interestText">Web Development</p>
+              </div>
+              <div class="p-4 rounded-xl bg-theme-primary">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center text-white">✨</div>
+                  <h4 class="font-semibold" id="goalTitle">Goal</h4>
+                </div>
+                <p class="text-sm text-gray-500" id="goalText">Fullstack Developer</p>
+              </div>
+            </div>
+            
+            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl gradient-bg text-white font-semibold hover:-translate-y-1 transition-all duration-300">
+              <span id="letsConnect">Let's Connect</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 section-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-accent font-semibold text-sm uppercase tracking-wider" id="skillsLabelSection">My Skills</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-2" id="skillsTitle">What I Can Do</h2>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Hard Skills -->
+          <div class="space-y-6">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-white text-sm">💻</span>
+              <span id="hardSkillsTitle">Hard Skills</span>
+            </h3>
+            
+            <div class="space-y-5">
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">HTML</span>
+                  <span class="text-accent font-semibold">90%</span>
+                </div>
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full gradient-bg rounded-full" style="width: 0%" data-width="90%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">CSS</span>
+                  <span class="text-accent font-semibold">85%</span>
+                </div>
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full gradient-bg rounded-full" style="width: 0%" data-width="85%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">JavaScript</span>
+                  <span class="text-accent font-semibold">70%</span>
+                </div>
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full gradient-bg rounded-full" style="width: 0%" data-width="70%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">React</span>
+                  <span class="text-accent font-semibold">50%</span>
+                </div>
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full gradient-bg rounded-full" style="width: 0%" data-width="50%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Git & GitHub</span>
+                  <span class="text-accent font-semibold">75%</span>
+                </div>
+                <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full gradient-bg rounded-full" style="width: 0%" data-width="75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Soft Skills -->
+          <div class="space-y-6">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-white text-sm">🧠</span>
+              <span id="softSkillsTitle">Soft Skills</span>
+            </h3>
+            
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="p-5 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 card-hover">
+                <div class="text-3xl mb-3">🎨</div>
+                <h4 class="font-semibold mb-1">Creativity</h4>
+                <p class="text-sm text-gray-500" id="creativityDesc">Innovative problem solver</p>
+              </div>
+              
+              <div class="p-5 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 card-hover">
+                <div class="text-3xl mb-3">🤝</div>
+                <h4 class="font-semibold mb-1">Teamwork</h4>
+                <p class="text-sm text-gray-500" id="teamworkDesc">Collaborative spirit</p>
+              </div>
+              
+              <div class="p-5 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 card-hover">
+                <div class="text-3xl mb-3">📖</div>
+                <h4 class="font-semibold mb-1">Fast Learner</h4>
+                <p class="text-sm text-gray-500" id="learnerDesc">Quick to adapt</p>
+              </div>
+              
+              <div class="p-5 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 card-hover">
+                <div class="text-3xl mb-3">⏰</div>
+                <h4 class="font-semibold mb-1">Time Management</h4>
+                <p class="text-sm text-gray-500" id="timeDesc">Organized workflow</p>
+              </div>
+              
+              <div class="p-5 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 card-hover">
+                <div class="text-3xl mb-3">💬</div>
+                <h4 class="font-semibold mb-1">Communication</h4>
+                <p class="text-sm text-gray-500" id="commDesc">Clear articulation</p>
+              </div>
+              
+              <div class="p-5 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 card-hover">
+                <div class="text-3xl mb-3">🔍</div>
+                <h4 class="font-semibold mb-1">Attention to Detail</h4>
+                <p class="text-sm text-gray-500" id="detailDesc">Precision focused</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tools & Technologies -->
+        <div class="mt-16">
+          <h3 class="text-xl font-bold text-center mb-8" id="toolsTitle">Tools & Technologies</h3>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="px-6 py-3 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center gap-2 hover:border-accent transition-colors">
+              <span class="text-2xl">⚛️</span>
+              <span class="font-medium">React</span>
+            </div>
+            <div class="px-6 py-3 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center gap-2 hover:border-accent transition-colors">
+              <span class="text-2xl">🎨</span>
+              <span class="font-medium">Tailwind CSS</span>
+            </div>
+            <div class="px-6 py-3 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center gap-2 hover:border-accent transition-colors">
+              <span class="text-2xl">📦</span>
+              <span class="font-medium">Node.js</span>
+            </div>
+            <div class="px-6 py-3 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center gap-2 hover:border-accent transition-colors">
+              <span class="text-2xl">🐙</span>
+              <span class="font-medium">GitHub</span>
+            </div>
+            <div class="px-6 py-3 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center gap-2 hover:border-accent transition-colors">
+              <span class="text-2xl">🎯</span>
+              <span class="font-medium">Figma</span>
+            </div>
+            <div class="px-6 py-3 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center gap-2 hover:border-accent transition-colors">
+              <span class="text-2xl">📝</span>
+              <span class="font-medium">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-theme-secondary section-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-accent font-semibold text-sm uppercase tracking-wider" id="portfolioLabel">Portfolio</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-2" id="portfolioTitle">My Recent Works</h2>
+        </div>
+        
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+          <button class="filter-btn active px-5 py-2 rounded-lg font-medium transition-all duration-300 border border-gray-200 dark:border-gray-700" data-filter="all" id="filterAll">All</button>
+          <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border border-gray-200 dark:border-gray-700" data-filter="web" id="filterWeb">Web</button>
+          <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border border-gray-200 dark:border-gray-700" data-filter="ui" id="filterUI">UI/UX</button>
+          <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border border-gray-200 dark:border-gray-700" data-filter="other" id="filterOther">Other</button>
+        </div>
+        
+        <!-- Portfolio Grid -->
+        <div id="portfolioGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div class="portfolio-item card-hover rounded-2xl overflow-hidden bg-theme-primary border border-gray-100 dark:border-gray-700" data-category="web">
+            <div class="aspect-video gradient-bg flex items-center justify-center text-white text-5xl">🌐</div>
+            <div class="p-6">
+              <span class="text-xs font-semibold text-accent uppercase">Web Development</span>
+              <h3 class="text-lg font-bold mt-2 mb-2">Personal Website</h3>
+              <p class="text-gray-500 text-sm mb-4">A responsive personal portfolio website built with HTML, CSS, and JavaScript.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">HTML</span>
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">CSS</span>
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">JavaScript</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 py-2 rounded-lg border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-all">Demo</button>
+                <button class="flex-1 py-2 rounded-lg gradient-bg text-white text-sm font-medium hover:opacity-90 transition-all">GitHub</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 2 -->
+          <div class="portfolio-item card-hover rounded-2xl overflow-hidden bg-theme-primary border border-gray-100 dark:border-gray-700" data-category="ui">
+            <div class="aspect-video bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-5xl">🎨</div>
+            <div class="p-6">
+              <span class="text-xs font-semibold text-accent uppercase">UI/UX Design</span>
+              <h3 class="text-lg font-bold mt-2 mb-2">E-Commerce UI</h3>
+              <p class="text-gray-500 text-sm mb-4">Modern e-commerce user interface design created in Figma.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">Figma</span>
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">UI Design</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 py-2 rounded-lg border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-all">Preview</button>
+                <button class="flex-1 py-2 rounded-lg gradient-bg text-white text-sm font-medium hover:opacity-90 transition-all">Details</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 3 -->
+          <div class="portfolio-item card-hover rounded-2xl overflow-hidden bg-theme-primary border border-gray-100 dark:border-gray-700" data-category="web">
+            <div class="aspect-video bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-5xl">📱</div>
+            <div class="p-6">
+              <span class="text-xs font-semibold text-accent uppercase">Web Development</span>
+              <h3 class="text-lg font-bold mt-2 mb-2">Task Manager App</h3>
+              <p class="text-gray-500 text-sm mb-4">A simple task management application with local storage.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">React</span>
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">Tailwind</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 py-2 rounded-lg border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-all">Demo</button>
+                <button class="flex-1 py-2 rounded-lg gradient-bg text-white text-sm font-medium hover:opacity-90 transition-all">GitHub</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 4 -->
+          <div class="portfolio-item card-hover rounded-2xl overflow-hidden bg-theme-primary border border-gray-100 dark:border-gray-700" data-category="other">
+            <div class="aspect-video bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white text-5xl">📊</div>
+            <div class="p-6">
+              <span class="text-xs font-semibold text-accent uppercase">Data Visualization</span>
+              <h3 class="text-lg font-bold mt-2 mb-2">Dashboard Template</h3>
+              <p class="text-gray-500 text-sm mb-4">Analytics dashboard with interactive charts and graphs.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">Chart.js</span>
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">CSS Grid</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 py-2 rounded-lg border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-all">Demo</button>
+                <button class="flex-1 py-2 rounded-lg gradient-bg text-white text-sm font-medium hover:opacity-90 transition-all">GitHub</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 5 -->
+          <div class="portfolio-item card-hover rounded-2xl overflow-hidden bg-theme-primary border border-gray-100 dark:border-gray-700" data-category="ui">
+            <div class="aspect-video bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white text-5xl">📋</div>
+            <div class="p-6">
+              <span class="text-xs font-semibold text-accent uppercase">UI/UX Design</span>
+              <h3 class="text-lg font-bold mt-2 mb-2">Mobile App Design</h3>
+              <p class="text-gray-500 text-sm mb-4">Food delivery mobile app UI design concept.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">Figma</span>
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">Prototype</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 py-2 rounded-lg border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-all">Preview</button>
+                <button class="flex-1 py-2 rounded-lg gradient-bg text-white text-sm font-medium hover:opacity-90 transition-all">Details</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 6 -->
+          <div class="portfolio-item card-hover rounded-2xl overflow-hidden bg-theme-primary border border-gray-100 dark:border-gray-700" data-category="web">
+            <div class="aspect-video bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-5xl">🎮</div>
+            <div class="p-6">
+              <span class="text-xs font-semibold text-accent uppercase">Web Development</span>
+              <h3 class="text-lg font-bold mt-2 mb-2">Mini Game Collection</h3>
+              <p class="text-gray-500 text-sm mb-4">Collection of browser-based mini games built with JavaScript.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">JavaScript</span>
+                <span class="px-3 py-1 text-xs rounded-full bg-accent/10 text-accent">Canvas</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 py-2 rounded-lg border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-all">Play</button>
+                <button class="flex-1 py-2 rounded-lg gradient-bg text-white text-sm font-medium hover:opacity-90 transition-all">GitHub</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 section-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-accent font-semibold text-sm uppercase tracking-wider" id="blogLabel">Blog</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-2" id="blogTitle">Latest Articles</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Blog Post 1 -->
+          <article class="card-hover rounded-2xl overflow-hidden bg-theme-secondary border border-gray-100 dark:border-gray-700">
+            <div class="aspect-video bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-5xl">📝</div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 text-sm text-gray-500 mb-3">
+                <span>Jan 15, 2025</span>
+                <span>•</span>
+                <span>5 min read</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 hover:text-accent transition-colors cursor-pointer">My Journey Learning Web Development</h3>
+              <p class="text-gray-500 text-sm mb-4">Sharing my experience as a beginner in the world of web development...</p>
+              <a href="#" class="inline-flex items-center gap-2 text-accent font-medium text-sm hover:gap-3 transition-all">
+                Read More
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- Blog Post 2 -->
+          <article class="card-hover rounded-2xl overflow-hidden bg-theme-secondary border border-gray-100 dark:border-gray-700">
+            <div class="aspect-video bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-5xl">💡</div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 text-sm text-gray-500 mb-3">
+                <span>Jan 10, 2025</span>
+                <span>•</span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 hover:text-accent transition-colors cursor-pointer">CSS Tips for Beginners</h3>
+              <p class="text-gray-500 text-sm mb-4">Essential CSS tricks that every beginner should know...</p>
+              <a href="#" class="inline-flex items-center gap-2 text-accent font-medium text-sm hover:gap-3 transition-all">
+                Read More
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- Blog Post 3 -->
+          <article class="card-hover rounded-2xl overflow-hidden bg-theme-secondary border border-gray-100 dark:border-gray-700">
+            <div class="aspect-video bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center text-white text-5xl">🚀</div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 text-sm text-gray-500 mb-3">
+                <span>Jan 5, 2025</span>
+                <span>•</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 hover:text-accent transition-colors cursor-pointer">How to Deploy to GitHub Pages</h3>
+              <p class="text-gray-500 text-sm mb-4">Step-by-step guide to publish your website using GitHub Pages...</p>
+              <a href="#" class="inline-flex items-center gap-2 text-accent font-medium text-sm hover:gap-3 transition-all">
+                Read More
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-theme-secondary section-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-accent font-semibold text-sm uppercase tracking-wider" id="testimonialLabel">Testimonials</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-2" id="testimonialTitle">What People Say</h2>
+        </div>
+        
+        <!-- Testimonial Carousel -->
+        <div class="relative max-w-4xl mx-auto">
+          <div id="testimonialContainer" class="overflow-hidden">
+            <div id="testimonialTrack" class="flex transition-transform duration-500">
+              <!-- Testimonial 1 -->
+              <div class="testimonial-slide flex-shrink-0 w-full px-4">
+                <div class="bg-theme-primary rounded-2xl p-8 text-center border border-gray-100 dark:border-gray-700">
+                  <div class="w-20 h-20 mx-auto mb-6 rounded-full gradient-bg flex items-center justify-center text-white text-3xl">👨‍🏫</div>
+                  <p class="text-gray-600 dark:text-gray-400 text-lg mb-6 italic">"Azzam shows great enthusiasm for learning. His dedication to understanding web development concepts is truly impressive."</p>
+                  <h4 class="font-bold text-lg">Teacher</h4>
+                  <p class="text-accent text-sm">Computer Science Instructor</p>
+                  <div class="flex justify-center gap-1 mt-4">
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Testimonial 2 -->
+              <div class="testimonial-slide flex-shrink-0 w-full px-4">
+                <div class="bg-theme-primary rounded-2xl p-8 text-center border border-gray-100 dark:border-gray-700">
+                  <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-3xl">👩‍💻</div>
+                  <p class="text-gray-600 dark:text-gray-400 text-lg mb-6 italic">"Working with Azzam on our group project was a great experience. He's a quick learner and always brings creative ideas."</p>
+                  <h4 class="font-bold text-lg">Classmate</h4>
+                  <p class="text-accent text-sm">Project Partner</p>
+                  <div class="flex justify-center gap-1 mt-4">
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Testimonial 3 -->
+              <div class="testimonial-slide flex-shrink-0 w-full px-4">
+                <div class="bg-theme-primary rounded-2xl p-8 text-center border border-gray-100 dark:border-gray-700">
+                  <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-3xl">👨‍💼</div>
+                  <p class="text-gray-600 dark:text-gray-400 text-lg mb-6 italic">"Azzam has great potential in web development. His attention to detail and willingness to learn makes him stand out."</p>
+                  <h4 class="font-bold text-lg">Mentor</h4>
+                  <p class="text-accent text-sm">Web Developer</p>
+                  <div class="flex justify-center gap-1 mt-4">
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                    <span class="text-yellow-400 text-xl">⭐</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Carousel Controls -->
+          <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-theme-secondary shadow-lg flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-theme-secondary shadow-lg flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+          
+          <!-- Dots -->
+          <div class="flex justify-center gap-2 mt-8">
+            <button class="testimonial-dot w-3 h-3 rounded-full bg-accent" data-index="0"></button>
+            <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600" data-index="1"></button>
+            <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600" data-index="2"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 section-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="text-accent font-semibold text-sm uppercase tracking-wider" id="contactLabel">Contact</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-2" id="contactTitle">Get In Touch</h2>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Contact Info -->
+          <div class="space-y-8">
+            <p class="text-gray-600 dark:text-gray-400 text-lg" id="contactDesc">
+              Feel free to reach out to me for collaboration, questions, or just to say hello! I'm always open to connecting with fellow developers and learners.
+            </p>
+            
+            <div class="space-y-6">
+              <div class="flex items-center gap-4 p-4 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700">
+                <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Email</h4>
+                  <p class="text-gray-500 text-sm">azzam.firdaus@email.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-4 p-4 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700">
+                <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold">WhatsApp</h4>
+                  <p class="text-gray-500 text-sm">+62 812 3456 7890</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-4 p-4 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700">
+                <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold" id="locationLabel">Location</h4>
+                  <p class="text-gray-500 text-sm">Subang, West Java, Indonesia</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="pt-6">
+              <h4 class="font-semibold mb-4" id="followMe">Follow Me</h4>
+              <div class="flex gap-3">
+                <a href="#" class="w-12 h-12 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent transition-all">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent transition-all">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-xl bg-theme-secondary border border-gray-100 dark:border-gray-700 flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent transition-all">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact Form -->
+          <div class="bg-theme-secondary rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
+            <form id="contactForm" class="space-y-6">
+              <div>
+                <label for="name" class="block text-sm font-medium mb-2" id="nameLabel">Your Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-theme-primary border border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all" placeholder="John Doe">
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium mb-2" id="emailLabel">Your Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-theme-primary border border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all" placeholder="john@example.com">
+              </div>
+              
+              <div>
+                <label for="subject" class="block text-sm font-medium mb-2" id="subjectLabel">Subject</label>
+                <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-xl bg-theme-primary border border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all" placeholder="Project Collaboration">
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium mb-2" id="messageLabel">Message</label>
+                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-xl bg-theme-primary border border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none" placeholder="Your message here..."></textarea>
+              </div>
+              
+              <button type="submit" class="w-full py-4 rounded-xl gradient-bg text-white font-semibold hover:shadow-lg hover:shadow-accent/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                <span id="sendMessage">Send Message</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+              </button>
+            </form>
+            
+            <!-- Success Message -->
+            <div id="formSuccess" class="hidden mt-6 p-4 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-center">
+              <span class="text-2xl mb-2 block">✅</span>
+              <p id="successText">Thank you! Your message has been sent successfully.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Google Maps Embed -->
+        <div class="mt-16 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56404377!2d107.67543!3d-6.5699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e693e4e7d3e6d4f%3A0x2b3e1e7f5c5b5c5f!2sSubang%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1234567890"
+            width="100%" 
+            height="300" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Location Map"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Rating Section -->
+    <section id="rating" class="py-20 bg-theme-secondary section-hidden">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span class="text-accent font-semibold text-sm uppercase tracking-wider" id="ratingLabel">Feedback</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-2" id="ratingTitle">Rate My Portfolio</h2>
+        </div>
+        
+        <div class="bg-theme-primary rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
+          <div class="text-center mb-6">
+            <div id="starRating" class="flex justify-center gap-2 text-5xl cursor-pointer">
+              <span class="star hover:scale-110 transition-transform" data-value="1">⭐</span>
+              <span class="star hover:scale-110 transition-transform" data-value="2">⭐</span>
+              <span class="star hover:scale-110 transition-transform" data-value="3">⭐</span>
+              <span class="star hover:scale-110 transition-transform" data-value="4">⭐</span>
+              <span class="star hover:scale-110 transition-transform" data-value="5">⭐</span>
+            </div>
+            <p id="ratingText" class="text-gray-500 mt-4">Click to rate</p>
+          </div>
+          
+          <div>
+            <label for="feedback" class="block text-sm font-medium mb-2" id="feedbackLabel">Your Feedback</label>
+            <textarea id="feedback" rows="4" class="w-full px-4 py-3 rounded-xl bg-theme-secondary border border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none" placeholder="Share your thoughts about my portfolio..."></textarea>
+          </div>
+          
+          <button id="submitRating" class="w-full mt-6 py-4 rounded-xl gradient-bg text-white font-semibold hover:shadow-lg hover:shadow-accent/30 transition-all">
+            <span id="submitFeedback">Submit Feedback</span>
+          </button>
+          
+          <div id="ratingSuccess" class="hidden mt-6 p-4 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-center">
+            <span class="text-2xl mb-2 block">🎉</span>
+            <p id="ratingSuccessText">Thank you for your feedback!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-theme-secondary border-t border-gray-100 dark:border-gray-700 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <!-- Brand -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white font-bold text-lg">A</div>
+            <span class="font-bold text-lg">Azzam <span class="text-accent">A. Firdaus</span></span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4" id="footerDesc">A passionate student exploring the world of web development. Building beautiful and functional web experiences.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-10 h-10 rounded-lg bg-theme-primary flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-lg bg-theme-primary flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-lg bg-theme-primary flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-bold mb-4" id="quickLinksTitle">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li><a href="#home" class="hover:text-accent transition-colors">Home</a></li>
+            <li><a href="#about" class="hover:text-accent transition-colors">About</a></li>
+            <li><a href="#portfolio" class="hover:text-accent transition-colors">Portfolio</a></li>
+            <li><a href="#blog" class="hover:text-accent transition-colors">Blog</a></li>
+            <li><a href="#contact" class="hover:text-accent transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact Info -->
+        <div>
+          <h4 class="font-bold mb-4" id="contactInfoTitle">Contact Info</h4>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              azzam@email.com
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              </svg>
+              Subang, Indonesia
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-gray-500">© 2026 Azzam Azhar Firdaus. All rights reserved.</p>
+        <button id="backToTop" class="flex items-center gap-2 text-sm text-accent hover:gap-3 transition-all">
+          Back to Top
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Floating Chatbot Button -->
+  <button id="chatbotBtn" class="fixed bottom-6 right-6 w-14 h-14 rounded-full gradient-bg text-white shadow-lg shadow-accent/30 flex items-center justify-center hover:scale-110 transition-transform z-40">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+  </button>
+  
+  <!-- Chatbot Window -->
+  <div id="chatbotWindow" class="chatbot-container fixed bottom-24 right-6 w-80 sm:w-96 bg-theme-secondary rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 z-40 overflow-hidden">
+    <div class="gradient-bg p-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">🤖</div>
+        <div>
+          <h4 class="text-white font-semibold text-sm">Portfolio Assistant</h4>
+          <p class="text-white/70 text-xs">Online</p>
+        </div>
+      </div>
+      <button id="closeChatbot" class="text-white/70 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div id="chatMessages" class="h-72 overflow-auto p-4 space-y-4">
+      <div class="flex gap-3">
+        <div class="w-8 h-8 rounded-full gradient-bg flex-shrink-0 flex items-center justify-center text-white text-sm">🤖</div>
+        <div class="bg-theme-primary rounded-2xl rounded-tl-none p-3 max-w-[80%]">
+          <p class="text-sm" id="welcomeChat">Hi! 👋 Welcome to Azzam's portfolio. How can I help you today?</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-4 border-t border-gray-100 dark:border-gray-700">
+      <div class="flex flex-wrap gap-2 mb-3">
+        <button class="quick-chat px-3 py-1.5 text-xs rounded-full border border-accent text-accent hover:bg-accent hover:text-white transition-all" data-message="Tell me about skills">Skills</button>
+        <button class="quick-chat px-3 py-1.5 text-xs rounded-full border border-accent text-accent hover:bg-accent hover:text-white transition-all" data-message="Show me projects">Projects</button>
+        <button class="quick-chat px-3 py-1.5 text-xs rounded-full border border-accent text-accent hover:bg-accent hover:text-white transition-all" data-message="How to contact?">Contact</button>
+      </div>
+      <div class="flex gap-2">
+        <input type="text" id="chatInput" placeholder="Type a message..." class="flex-1 px-4 py-2 rounded-xl bg-theme-primary border border-gray-200 dark:border-gray-700 text-sm outline-none focus:border-accent">
+        <button id="sendChat" class="w-10 h-10 rounded-xl gradient-bg text-white flex items-center justify-center hover:opacity-90 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Sidebar (Desktop Only) -->
+  <aside class="fixed left-0 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-4 p-3 bg-theme-secondary/80 backdrop-blur-sm rounded-r-xl border border-l-0 border-gray-100 dark:border-gray-700 z-30">
+    <a href="#" class="w-10 h-10 rounded-lg hover:bg-accent hover:text-white flex items-center justify-center transition-all" title="Instagram">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/></svg>
+    </a>
+    <a href="#" class="w-10 h-10 rounded-lg hover:bg-accent hover:text-white flex items-center justify-center transition-all" title="GitHub">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="#" class="w-10 h-10 rounded-lg hover:bg-accent hover:text-white flex items-center justify-center transition-all" title="WhatsApp">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+    </a>
+  </aside>
+
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_title: 'Azzam Azhar Firdaus',
+      hero_subtitle: 'Student | Web Learner | Creative Thinker',
+      hero_description: 'Passionate about creating beautiful and functional web experiences. Currently learning and exploring the vast world of web development.',
+      about_text: "Hello! I'm Azzam Azhar Firdaus, a passionate student who loves exploring the world of web development. I believe that technology can change the world, and I want to be part of that change.",
+      background_color: '#f8fafc',
+      surface_color: '#ffffff',
+      text_color: '#1e293b',
+      primary_action_color: '#0d9488',
+      secondary_action_color: '#14b8a6',
+      font_family: 'Poppins',
+      font_size: 16
+    };
+    
+    let config = { ...defaultConfig };
+    let currentLang = 'id';
+    let currentTestimonial = 0;
+    let selectedRating = 0;
+    
+    // Translations
+    const translations = {
+      id: {
+        statusText: 'Tersedia untuk peluang',
+        greeting: 'Hai, saya',
+        projectsLabel: 'Proyek',
+        skillsLabel: 'Skill',
+        certsLabel: 'Sertifikat',
+        aboutLabel: 'Tentang Saya',
+        aboutTitle: 'Kenali Saya',
+        yearsLabel: 'Tahun Belajar',
+        educationTitle: 'Pendidikan',
+        educationText: 'Siswa SMA',
+        locationTitle: 'Lokasi',
+        locationText: 'Indonesia',
+        interestTitle: 'Minat',
+        interestText: 'Web Development',
+        goalTitle: 'Tujuan',
+        goalText: 'Fullstack Developer',
+        letsConnect: 'Mari Terhubung',
+        skillsLabelSection: 'Keahlian Saya',
+        skillsTitle: 'Apa yang Bisa Saya Lakukan',
+        hardSkillsTitle: 'Hard Skills',
+        softSkillsTitle: 'Soft Skills',
+        creativityDesc: 'Pemecah masalah inovatif',
+        teamworkDesc: 'Semangat kolaborasi',
+        learnerDesc: 'Cepat beradaptasi',
+        timeDesc: 'Alur kerja terorganisir',
+        commDesc: 'Artikulasi yang jelas',
+        detailDesc: 'Fokus pada presisi',
+        toolsTitle: 'Alat & Teknologi',
+        portfolioLabel: 'Portofolio',
+        portfolioTitle: 'Karya Terbaru Saya',
+        filterAll: 'Semua',
+        filterWeb: 'Web',
+        filterUI: 'UI/UX',
+        filterOther: 'Lainnya',
+        blogLabel: 'Blog',
+        blogTitle: 'Artikel Terbaru',
+        testimonialLabel: 'Testimoni',
+        testimonialTitle: 'Apa Kata Mereka',
+        contactLabel: 'Kontak',
+        contactTitle: 'Hubungi Saya',
+        contactDesc: 'Jangan ragu untuk menghubungi saya untuk kolaborasi, pertanyaan, atau sekadar menyapa! Saya selalu terbuka untuk terhubung dengan sesama pengembang dan pembelajar.',
+        locationLabel: 'Lokasi',
+        followMe: 'Ikuti Saya',
+        nameLabel: 'Nama Anda',
+        emailLabel: 'Email Anda',
+        subjectLabel: 'Subjek',
+        messageLabel: 'Pesan',
+        sendMessage: 'Kirim Pesan',
+        successText: 'Terima kasih! Pesan Anda telah berhasil dikirim.',
+        ratingLabel: 'Ulasan',
+        ratingTitle: 'Beri Rating Portofolio Saya',
+        ratingText: 'Klik untuk memberi rating',
+        feedbackLabel: 'Masukan Anda',
+        submitFeedback: 'Kirim Ulasan',
+        ratingSuccessText: 'Terima kasih atas ulasan Anda!',
+        footerDesc: 'Seorang mahasiswa yang bersemangat menjelajahi dunia web development. Membangun pengalaman web yang indah dan fungsional.',
+        quickLinksTitle: 'Tautan Cepat',
+        contactInfoTitle: 'Info Kontak',
+        welcomeChat: 'Hai! 👋 Selamat datang di portofolio Azzam. Ada yang bisa saya bantu?'
+      },
+      en: {
+        statusText: 'Available for opportunities',
+        greeting: 'Hi, I\'m',
+        projectsLabel: 'Projects',
+        skillsLabel: 'Skills',
+        certsLabel: 'Certificates',
+        aboutLabel: 'About Me',
+        aboutTitle: 'Get To Know Me',
+        yearsLabel: 'Years Learning',
+        educationTitle: 'Education',
+        educationText: 'High School Student',
+        locationTitle: 'Location',
+        locationText: 'Indonesia',
+        interestTitle: 'Interest',
+        interestText: 'Web Development',
+        goalTitle: 'Goal',
+        goalText: 'Fullstack Developer',
+        letsConnect: 'Let\'s Connect',
+        skillsLabelSection: 'My Skills',
+        skillsTitle: 'What I Can Do',
+        hardSkillsTitle: 'Hard Skills',
+        softSkillsTitle: 'Soft Skills',
+        creativityDesc: 'Innovative problem solver',
+        teamworkDesc: 'Collaborative spirit',
+        learnerDesc: 'Quick to adapt',
+        timeDesc: 'Organized workflow',
+        commDesc: 'Clear articulation',
+        detailDesc: 'Precision focused',
+        toolsTitle: 'Tools & Technologies',
+        portfolioLabel: 'Portfolio',
+        portfolioTitle: 'My Recent Works',
+        filterAll: 'All',
+        filterWeb: 'Web',
+        filterUI: 'UI/UX',
+        filterOther: 'Other',
+        blogLabel: 'Blog',
+        blogTitle: 'Latest Articles',
+        testimonialLabel: 'Testimonials',
+        testimonialTitle: 'What People Say',
+        contactLabel: 'Contact',
+        contactTitle: 'Get In Touch',
+        contactDesc: 'Feel free to reach out to me for collaboration, questions, or just to say hello! I\'m always open to connecting with fellow developers and learners.',
+        locationLabel: 'Location',
+        followMe: 'Follow Me',
+        nameLabel: 'Your Name',
+        emailLabel: 'Your Email',
+        subjectLabel: 'Subject',
+        messageLabel: 'Message',
+        sendMessage: 'Send Message',
+        successText: 'Thank you! Your message has been sent successfully.',
+        ratingLabel: 'Feedback',
+        ratingTitle: 'Rate My Portfolio',
+        ratingText: 'Click to rate',
+        feedbackLabel: 'Your Feedback',
+        submitFeedback: 'Submit Feedback',
+        ratingSuccessText: 'Thank you for your feedback!',
+        footerDesc: 'A passionate student exploring the world of web development. Building beautiful and functional web experiences.',
+        quickLinksTitle: 'Quick Links',
+        contactInfoTitle: 'Contact Info',
+        welcomeChat: 'Hi! 👋 Welcome to Azzam\'s portfolio. How can I help you today?'
+      }
+    };
+    
+    // Update translations
+    function updateTranslations(lang) {
+      const t = translations[lang];
+      Object.keys(t).forEach(key => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.textContent = t[key];
+        }
+      });
+    }
+    
+    // Initialize Elements SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          
+          // Update hero section
+          const heroTitle = document.getElementById('heroTitle');
+          const heroSubtitle = document.getElementById('heroSubtitle');
+          const heroDescription = document.getElementById('heroDescription');
+          const aboutText = document.getElementById('aboutText');
+          
+          if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+          if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          if (heroDescription) heroDescription.textContent = config.hero_description || defaultConfig.hero_description;
+          if (aboutText) aboutText.textContent = config.about_text || defaultConfig.about_text;
+          
+          // Apply colors
+          document.documentElement.style.setProperty('--bg-primary', config.background_color || defaultConfig.background_color);
+          document.documentElement.style.setProperty('--bg-secondary', config.surface_color || defaultConfig.surface_color);
+          document.documentElement.style.setProperty('--text-primary', config.text_color || defaultConfig.text_color);
+          document.documentElement.style.setProperty('--accent-primary', config.primary_action_color || defaultConfig.primary_action_color);
+          document.documentElement.style.setProperty('--accent-secondary', config.secondary_action_color || defaultConfig.secondary_action_color);
+          
+          // Apply font
+          const fontFamily = config.font_family || defaultConfig.font_family;
+          document.body.style.fontFamily = `${fontFamily}, Poppins, sans-serif`;
+          
+          // Apply font size
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.body.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (value) => {
+                cfg.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                cfg.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => {
+                cfg.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                cfg.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => cfg.secondary_action_color || default
